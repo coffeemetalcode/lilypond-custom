@@ -53,3 +53,19 @@ centerChords = {
   \override ChordNames.ChordName #'stencil = #centerCN
   \override ChordNames.ChordName #'extra-offset = #'(0.75 . 0.0)
 }
+
+% Center chord symbols horizontally on the notehead
+% Notehead width is approximately 1.3 staff-spaces
+#(define notehead-center 0.65)
+
+centerChordSymbols = {
+  \override ChordName.after-line-breaking =
+    #(lambda (grob)
+       (let* ((stil (ly:grob-property grob 'stencil)))
+         (if (ly:stencil? stil)
+             (let* ((ext (ly:stencil-extent stil X))
+                    (width (interval-length ext))
+                    (shift (- notehead-center (/ width 2.0))))
+               (ly:grob-set-property! grob 'stencil
+                 (ly:stencil-translate-axis stil shift X))))))
+}
