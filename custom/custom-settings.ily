@@ -3,6 +3,9 @@
 %%% Include with `\include "custom-settings.ily"`
 %%% Invoke individual commands where appropriate (see docstrings)
 
+\include "chords/hal-leonard-chords.ily"
+\include "chords/jazz-chords-en.ily"
+
 %% ──────────────────────────────────────────────────────────────────────────
 %% Chords
 %% ──────────────────────────────────────────────────────────────────────────
