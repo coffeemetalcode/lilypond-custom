@@ -3,16 +3,16 @@
 %%% Include with `\include "custom-settings.ily"`
 %%% Invoke individual commands where appropriate (see docstrings)
 
-\include "chords/hal-leonard-chords.ily"
+\include "chords/hal-leonard-chords-en.ily"
 \include "chords/jazz-chords.ily"
 
 %% ──────────────────────────────────────────────────────────────────────────
 %% Chords
 %% ──────────────────────────────────────────────────────────────────────────
 
-%%% ─────────────────────────────────────────────────────────────────────────
-%%% Center Chord Symbols
-%%% ─────────────────────────────────────────────────────────────────────────
+%%%% ────────────────────────────────────────────────────────────────────────
+%%%% Center Chord Symbols
+%%%% ────────────────────────────────────────────────────────────────────────
 
 % Center chord symbols horizontally on the notehead
 % Notehead width is approximately 1.3 staff-spaces
@@ -41,9 +41,9 @@ centerChordSymbols = {
         (ly:stencil-translate-axis stil shift X))))))
 }
 
-%%% ─────────────────────────────────────────────────────────────────────────
-%%% Hal Leonard Chord Symbols
-%%% ─────────────────────────────────────────────────────────────────────────
+%%%% ────────────────────────────────────────────────────────────────────────
+%%%% Hal Leonard Chord Symbols
+%%%% ────────────────────────────────────────────────────────────────────────
 
 % Use Hal Leonard chord naming conventions as in their popular
 % Guitar Recorded Versions® (GRV) songbooks and other formats
