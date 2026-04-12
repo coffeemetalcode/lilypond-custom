@@ -25,7 +25,6 @@ global = {
 }
 
 fromNoteInput = \chordmode {
-  % \mark \markup { \tiny "From note entry syntax" }
   \relative c' {
     % triads
     <c e g>4 <c ef g> <c e gs> <c ef gf> |
@@ -33,7 +32,7 @@ fromNoteInput = \chordmode {
     <c e g bf> <c e g b> <c ef g bf> <c ef gf bff> |
     <c e gs bf> <c ef gf bf> <c ef g b> r | \break
     % sixth chords
-    <c e g a> <c ef g a> r2 |
+    <c e g a> <c e g a d> <c ef g a> r4 |
     % ninth chords
     <c e g bf d>4 <c e g b d> <c ef g bf d> r |
     % eleventh chords
@@ -48,14 +47,13 @@ fromNoteInput = \chordmode {
 }
 
 fromChordModifierInput = \chordmode {
-% \markup { \tiny "From chord modifier syntax" }
   % triads
   c4 c:m c:aug c:dim |
   % seventh chords
   c:7 c:maj7 c:m7 c:dim7 |
   c:aug7 c:m7.5- c:m7+ r | \break
   % sixth chords
-  c:6 c:m6 r2 |
+  c:6 c:6.9 c:m6 r4 |
   % ninth chords
   c4:9 c:maj9 c:m9 r |
   % eleventh chords
@@ -63,7 +61,7 @@ fromChordModifierInput = \chordmode {
   % thirteenth chords
   c:7.13 c:13 c:maj13 c:m13 |
   % suspended and fifth (power) chords
-  c:sus2 c:sus4 c:5 c:5 |
+  c:sus2 c:sus4 c:5 c:5.8 |
   % add chords
   c:3.5.9 c:3-.5.9 r2 | \break
 }
