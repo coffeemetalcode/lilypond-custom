@@ -59,7 +59,7 @@ fromChordModifierInput = \chordmode {
   % eleventh chords
   c:11 c:maj11 c:m11 r | \break
   % thirteenth chords
-  c:7.13 c:13 c:maj13 c:m13 |
+  c:9.13 c:13.11 c:maj13.11 c:m13 |
   % suspended and fifth (power) chords
   c:sus2 c:sus4 c:5 c:5.8 |
   % add chords
@@ -71,6 +71,7 @@ fromChordModifierInput = \chordmode {
   <<
     \new ChordNames {
       \global
+      % \centerChordSymbols
       \mark \markup {
         \column {
           \small { "Default Ignatzek style" }
@@ -96,4 +97,10 @@ fromChordModifierInput = \chordmode {
       \fromNoteInput \fromChordModifierInput
     }
   >>
+  \layout {
+    \context {
+      \ChordNames
+      \hlSerifFont
+    }
+  }
 }
