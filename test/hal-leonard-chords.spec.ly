@@ -87,7 +87,7 @@ fromChordModifierInput = \chordmode {
   % C7#11 | Csus2/add11 | C7#9 | C9#11 |
   c:9.11+ c:sus2.11 c:7.9+ c:9.11+ |
   % Csus2/4 |
-  c:2.4^3.5 r2. | \break
+  c:2.4^3.5 r2. | \pageBreak
 }
 
 \score {
@@ -125,7 +125,7 @@ fromChordModifierInput = \chordmode {
       \ChordNames
       % \hlSerifFont
       % \hlSansFont
-      % \override ChordName.font-size = #8
+      \override ChordName.font-size = #-1.5
     }
   }
 }

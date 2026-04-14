@@ -6,59 +6,43 @@ alterSharp = \markup { \fontsize #-2.5 \translate-scaled #'(0 . 1.0) \sharp }
 alterFlat = \markup { \fontsize #-2.5 \translate-scaled #'(0 . 0.5) \flat }
 
 %% Stacked suffix markup command
-%% Usage: \markup { \stacked-suffix "top" "bottom" }
-%% or:   \markup { \stacked-suffix \concat { \alterSharp "11" } "add9" }
+%% Usage: \markup { \stacked-suffix "top" "bottom" } (center, default)
+%%    or: \markup { \stacked-suffix-left "top" "bottom" }
+%%    or: \markup { \stacked-suffix-right "top" "bottom" }
+
+%% Internal helper that takes alignment as first arg
+#(define (stacked-suffix-internal layout props align top bottom)
+  (let* ((size-factor (magstep (chain-assoc-get 'font-size props 0)))
+         (base-skip 1.25)
+         (base-raise 1.05)
+         (scaled-skip (* base-skip size-factor))
+         (column-cmd (case align
+                      ((left) make-left-column-markup)
+                      ((right) make-right-column-markup)
+                      (else make-center-column-markup))))
+   (interpret-markup layout props
+    (markup
+     #:translate-scaled (cons 0 base-raise)
+     #:fontsize -4.25
+     #:override `(baseline-skip . ,scaled-skip)
+     (column-cmd (list top bottom))))))
+
 #(define-markup-command (stacked-suffix layout props top bottom)
   (markup? markup?)
-  #:properties ((font-size 0))
-  "Stack two suffix elements vertically, centered on the chord root baseline."
-  (interpret-markup layout props
-   #{
-   \markup {
-   \raise #0.9
-   \fontsize #-3
-   \override #'(baseline-skip . 1)
-   \left-column {
-     % \raise #0.35 #top
-     % \lower #0.15 #bottom
-     \translate-scaled #'(0 . 0.5) #top
-     \translate-scaled #'(0 . -0.15) #bottom
-   }
- }
-   #}))
+  "Stack two suffix elements vertically, center-aligned (default)."
+  (stacked-suffix-internal layout props 'center top bottom))
 
-#(define-markup-command (stacked-alteration layout props top bottom)
+#(define-markup-command (stacked-suffix-left layout props top bottom)
   (markup? markup?)
-  #:properties ((font-size 0))
-  "Stack two accidentals for chord alterations"
-  (interpret-markup layout props
-   #{
-   \markup {
-   \raise #1
-   \fontsize #-3.25
-   \override #'(baseline-skip . 1)
-   \right-column {
-     % \raise #0.35 #top
-     % \lower #0.15 #bottom
-     \translate-scaled #'(0 . 0.5) #top
-     \translate-scaled #'(0 . -0.15) #bottom
-   }
- }
-   #}))
+  "Stack two suffix elements vertically, left-aligned."
+  (stacked-suffix-internal layout props 'left top bottom))
 
-   %% Helper for altered intervals (e.g., #11, b9)
-#(define-markup-command (altered-interval layout props alteration interval)
-  (markup? string?)
-  #:properties ((font-size 0))
-  "Create an altered interval like #11 or b9."
-  (interpret-markup layout props
-   #{
-   \markup {
-   \concat { #alteration #interval }
- }
-   #}))
+#(define-markup-command (stacked-suffix-right layout props top bottom)
+  (markup? markup?)
+  "Stack two suffix elements vertically, right-aligned."
+  (stacked-suffix-internal layout props 'right top bottom))
 
-
+  % Chord Exceptions
 hlChordCustomizations = {
   % + c1:aug
   <c e gs>1-\markup { "+" }
@@ -126,18 +110,20 @@ hlChordCustomizations = {
   <c ef gs bf df'>1-\markup {
     \concat {
       "m7"
-      \stacked-alteration \alterFlat \alterSharp
-      \stacked-suffix "9" "5"
-      % \stacked-suffix \concat { \alterFlat "9" } \concat { \alterSharp "5" }
+      \concat {
+        \stacked-suffix \alterFlat \alterSharp
+        \stacked-suffix "9" "5"
+      }
     }
   }
   % 7b9#5
   <c e gs bf df'>1-\markup {
     \concat {
       "7"
-      \stacked-alteration \alterFlat \alterSharp
-      \stacked-suffix "9" "5"
-      % \stacked-suffix \concat { \alterFlat "9" } \concat { \alterSharp "5" }
+      \concat {
+        \stacked-suffix \alterFlat \alterSharp
+        \stacked-suffix "9" "5"
+      }
     }
   }
   % add4
@@ -181,7 +167,7 @@ hlChordCustomizations = {
   % sus2/add11
   <c d g f'>1-\markup {
     % \concat { \stacked-suffix "sus2" "add11" }
-    \stacked-suffix "sus2" "add11"
+    \stacked-suffix-left "sus2" "add11"
   }
   % 7#9
   <c e g bf ds'>1-\markup {
