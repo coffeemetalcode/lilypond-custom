@@ -19,8 +19,10 @@ alterFlat = \markup { \fontsize #-2.5 \translate-scaled #'(0 . 0.5) \flat }
    \fontsize #-3
    \override #'(baseline-skip . 1)
    \left-column {
-     \raise #0.35 #top
-     \lower #0.15 #bottom
+     % \raise #0.35 #top
+     % \lower #0.15 #bottom
+     \translate-scaled #'(0 . 0.5) #top
+     \translate-scaled #'(0 . -0.15) #bottom
    }
  }
    #}))
@@ -35,9 +37,11 @@ alterFlat = \markup { \fontsize #-2.5 \translate-scaled #'(0 . 0.5) \flat }
    \raise #1
    \fontsize #-3.25
    \override #'(baseline-skip . 1)
-   \center-column {
-     \raise #0.35 #top
-     \lower #0.15 #bottom
+   \right-column {
+     % \raise #0.35 #top
+     % \lower #0.15 #bottom
+     \translate-scaled #'(0 . 0.5) #top
+     \translate-scaled #'(0 . -0.15) #bottom
    }
  }
    #}))

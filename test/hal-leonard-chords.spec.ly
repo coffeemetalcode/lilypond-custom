@@ -50,11 +50,11 @@ fromNoteInput = \chordmode {
     % C7sus4 | C(b9)#11 | Cm(add4) | C13#9
     <c f g bf> <c e g bf df fs> <c ef f g> <c e g bf ds f a> |
     % C7b5 | Cm6/9 | C13b9 | C7b9 |
-    <c e gf bf> <c ef g a d> <c e g bf df f a> <c e g bf df> |
+    <c e gf bf> <c ef g a d> <c e g bf df f a> <c e g bf df> | \break
     % C7#11 | Csu2/add11 | C7#9 | C9#11 |
     <c e g bf d fs> <c d g f'> <c e g bf ds> <c e g bf d af'> |
     % Csus2/4 |
-    <c d f> r2. |
+    <c d f> r2. | \break
   }
 }
 
@@ -83,11 +83,11 @@ fromChordModifierInput = \chordmode {
   % C7sus4 | C(b9)#11 | Cm(add4) | C13#9
   c:7sus4 c:7.9-.11+ c:5.3-.4 c:13.11.9+ |
   % C7b5 | Cm6/9 | C13b9 | C7b9 |
-  c:7.5- c:m6.9 c:13.11.9- c:7.9- |
+  c:7.5- c:m6.9 c:13.11.9- c:7.9- | \break
   % C7#11 | Csus2/add11 | C7#9 | C9#11 |
   c:9.11+ c:sus2.11 c:7.9+ c:9.11+ |
   % Csus2/4 |
-  c:2.4^3.5 r2. |
+  c:2.4^3.5 r2. | \break
 }
 
 \score {
@@ -123,7 +123,9 @@ fromChordModifierInput = \chordmode {
   \layout {
     \context {
       \ChordNames
-      \hlSerifFont
+      % \hlSerifFont
+      % \hlSansFont
+      % \override ChordName.font-size = #8
     }
   }
 }
