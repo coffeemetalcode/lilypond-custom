@@ -15,12 +15,12 @@ alterFlat = \markup { \fontsize #-2.5 \translate-scaled #'(0 . 0.5) \flat }
   (interpret-markup layout props
    #{
    \markup {
-   \raise #0.75
+   \raise #0.9
    \fontsize #-3
    \override #'(baseline-skip . 1)
-   \center-column {
-     \raise #0.3 #top
-     \lower #0.1 #bottom
+   \left-column {
+     \raise #0.35 #top
+     \lower #0.15 #bottom
    }
  }
    #}))
@@ -32,12 +32,12 @@ alterFlat = \markup { \fontsize #-2.5 \translate-scaled #'(0 . 0.5) \flat }
   (interpret-markup layout props
    #{
    \markup {
-   \raise #0.75
-   \fontsize #-3
+   \raise #1
+   \fontsize #-3.25
    \override #'(baseline-skip . 1)
    \center-column {
-     \raise #0.1 #top
-     \lower #0.1 #bottom
+     \raise #0.35 #top
+     \lower #0.15 #bottom
    }
  }
    #}))
@@ -116,6 +116,81 @@ hlChordCustomizations = {
   <c g>1-\markup { "5" }
   % 5 c1:1.5.8
   <c g c'>1-\markup { "5" }
+
+  %% From Harmonic Analysis chapter in the Hal Leonard style guide
+  % m7b9#5
+  <c ef gs bf df'>1-\markup {
+    \concat {
+      "m7"
+      \stacked-alteration \alterFlat \alterSharp
+      \stacked-suffix "9" "5"
+      % \stacked-suffix \concat { \alterFlat "9" } \concat { \alterSharp "5" }
+    }
+  }
+  % 7b9#5
+  <c e gs bf df'>1-\markup {
+    \concat {
+      "7"
+      \stacked-alteration \alterFlat \alterSharp
+      \stacked-suffix "9" "5"
+      % \stacked-suffix \concat { \alterFlat "9" } \concat { \alterSharp "5" }
+    }
+  }
+  % add4
+  <c e f g>1-\markup { "add4" }
+  % 13sus4
+  <c f g bf d' f' a'>1-\markup { "13sus4" }
+  % 7sus4
+  <c f g bf>1-\markup { "7sus4" }
+  % (b9)#11
+  <c e g bf df' fs'>1-\markup {
+    \concat {
+      "(" \alterFlat "9)" \alterSharp "11"
+    }
+  }
+  % m(add4)
+  <c ef f g>1-\markup { "m(add4)" }
+  % 13#9
+  <c e g bf ds' f' a'>1-\markup {
+    \concat { "13" \alterSharp "9" }
+  }
+  % 7b5
+  <c e gf bf>1-\markup {
+    \concat { "7" \alterFlat "5" }
+  }
+  % m6/9
+  <c ef g a d'>1-\markup {
+    \concat { "m" \stacked-suffix "6" "9" }
+  }
+  % 13b9
+  <c e g bf df' f' a'>1-\markup {
+    \concat { "13" \alterFlat "9" }
+  }
+  % 7b9
+  <c e g bf df'>1-\markup {
+    \concat { "7" \alterFlat "9" }
+  }
+  % 7#11
+  <c e g bf d' fs'>1-\markup {
+    \concat { "7" \alterSharp "11" }
+  }
+  % sus2/add11
+  <c d g f'>1-\markup {
+    % \concat { \stacked-suffix "sus2" "add11" }
+    \stacked-suffix "sus2" "add11"
+  }
+  % 7#9
+  <c e g bf ds'>1-\markup {
+    \concat { "7" \alterSharp "9" }
+  }
+  % 9#11
+  <c e g bf d' af'>1-\markup {
+    \concat { "9" \alterSharp "11" }
+  }
+  % sus2/4
+  <c d f>1-\markup {
+    \concat { "sus" \stacked-suffix "2" "4" }
+  }
 }
 
 hlChords = #(append
