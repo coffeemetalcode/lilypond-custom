@@ -125,7 +125,7 @@ fromChordModifierInput = \chordmode {
       \ChordNames
       % \hlSerifFont
       % \hlSansFont
-      \override ChordName.font-size = #-1.5
+      % \override ChordName.font-size = #-1.0
     }
   }
 }
