@@ -4,7 +4,7 @@
 %%% Invoke individual commands where appropriate (see docstrings)
 
 \include "chords/hal-leonard-chords-en.ily"
-\include "chords/jazz-chords.ily"
+\include "chords/jazz-chords-en.ily"
 
 %% ──────────────────────────────────────────────────────────────────────────
 %% Chords

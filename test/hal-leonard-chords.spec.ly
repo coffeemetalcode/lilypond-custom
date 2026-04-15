@@ -24,6 +24,9 @@ global = {
   \clef treble
 }
 
+% TODO format this file
+% TODO clean up handling of section headings
+
 fromNoteInput = \chordmode {
   \relative c' {
     % triads
@@ -123,9 +126,6 @@ fromChordModifierInput = \chordmode {
   \layout {
     \context {
       \ChordNames
-      % \hlSerifFont
-      % \hlSansFont
-      % \override ChordName.font-size = #-1.0
     }
   }
 }

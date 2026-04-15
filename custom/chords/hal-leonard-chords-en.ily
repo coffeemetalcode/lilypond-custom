@@ -126,7 +126,6 @@ hlChordCustomizations = {
   }
   % sus2/add11
   <c d g f'>1-\markup {
-    % \concat { \stacked-suffix "sus2" "add11" }
     \stacked-suffix-left "sus2" "add11"
   }
   % 7#9
