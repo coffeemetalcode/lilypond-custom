@@ -10,12 +10,15 @@
   left-margin = 0.75\in
   right-margin = 0.75\in
   indent = 0\in
+  ragged-bottom = ##f
+  ragged-last-bottom = ##f
+  ragged-right = ##f
+  ragged-last = ##f
 }
 
 \header {
   title = "Hal Leonard Chords Test"
   composer = "coffee | metal | code"
-  ragged-right = ##f
 }
 
 global = {

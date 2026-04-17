@@ -28,6 +28,8 @@
 % TODO: This value should be derived, or at the least, passed to the function
 % as CDR from an alist where the different fonts are given actual values for
 % the different notehead glyphs
+% TODO: Note spacing doesn't shift left with the chord symbol and is very
+% noticeable in long chord symbols
 #(define notehead-center 0.65)
 centerChordSymbols = {
   \override ChordName.after-line-breaking =
@@ -40,6 +42,8 @@ centerChordSymbols = {
        (ly:grob-set-property! grob 'stencil
         (ly:stencil-translate-axis stil shift X))))))
 }
+
+% TODO: A similar function that centers only the chord root on the notehead
 
 %%%% ────────────────────────────────────────────────────────────────────────
 %%%% Hal Leonard Chord Symbols
